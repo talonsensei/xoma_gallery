@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Nithin Reddy">
+	<!-- Date: 2008-11-25 -->
+	<link rel="stylesheet" href="/contest/static/css/blueprint/screen.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<body>
+    <div class='container'>
+        <div class='span-24'>
+            <h1>{{ decision.name }}</h1>
+            <h2>I'm the decider, and I decide what is best.</h2>
+            <h3>Options</h3>
+            <ul>
+                {% for option in options %}
+                    <li>{{ option.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

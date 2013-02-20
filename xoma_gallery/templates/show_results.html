@@ -1,0 +1,28 @@
+{% extends 'site_base.html' %}
+
+{% block name %}{{ contest.name }} Awards{% endblock %}
+
+{% block pagetitle %}{{ contest.name }} Awards</span>{% endblock %}
+
+{% block header %}
+<p><a href="/contest/{{ contest.id }}">View All Entries from {{ contest.name }}</a> | 
+    <a href="/contest/">View All Contests</a></p>
+{% endblock %}
+
+{% block content %}
+<div class="entry-contest">
+    {% for award in contest.awards.all %}
+    <div class="contest-section">
+        <h2>{{ award.name|capfirst }}</h2>
+        {% for winner in award.winners.all %}
+        <div class="contest-entry">
+            <h3 style="text-align:center; margin-top:1em;">{{ winner.entry.owner }}</h3>
+            <a href="{{ winner.entry.image.url }}?height={{ winner.entry.image.height|add:5 }}&width={{ winner.entry.image.width|add:5 }}" class="thickbox"  name="{{ winner.entry.name }}">
+                <img src="{{ winner.entry.thumbnail.url }}" alt="{{ winner.entry.name }}" />
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

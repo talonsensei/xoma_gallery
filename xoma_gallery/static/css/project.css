@@ -1,0 +1,81 @@
+/* @override http://ibiza.xoma.com:8000/contest/static/css/project.css */
+
+body {
+	background-color: #222;
+}
+
+.container {
+	background-color: white;
+}
+
+.header {
+	float: left;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+.header h1 {
+	margin-top: 1em;
+}
+
+.photo-entry {
+	float: left;
+}
+
+.contest-entry {
+	float: left;
+	margin: 25px;
+	width: 205px;
+	padding: 2px;
+	background-color: #366dcc;
+}
+
+.contest-thumbnail {
+	float: left;
+	padding: 2px;
+	background-color: #366dcc;
+	margin-right: 8px;
+	margin-bottom: 1em;
+}
+
+.contest-section {
+	float: left;
+	width: 100%;
+	padding-bottom: .5em;
+	margin-bottom: 2em;
+	border-bottom: 1px solid #ccc;
+}
+
+.contest-section h2 {
+	margin: 0;
+}
+
+.scored-False {
+	background-color: #faff4f;
+}
+
+.tiny {
+	font-size: 50%;
+}
+
+.rating-area .happy {
+	background: url(blueprint/src/face-smile.png) no-repeat 2px 3px;
+	height: 20px;
+	padding-left: 25px;
+	background-color: white;
+}
+
+.rating-area .star {
+	height: 20px;
+	width: 20px;
+	float: left;
+}
+
+.rating-area .star.off {
+	background: url(blueprint/src/star_off.jpg) no-repeat;
+}
+
+.rating-area .star.on {
+	background-image: url(blueprint/src/star_on.jpg);
+}

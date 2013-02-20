@@ -1,0 +1,60 @@
+{% extends "site_base.html" %}
+{% load photo_extras %}
+
+{% block name %}{{ contest.name }}{% endblock %}
+{% block pagetitle %}
+    {{ contest.name }} <span class="tiny"><a href="/contest/">view all contests</a></span>
+{% endblock %}
+
+{% block header %}
+    {% if contest.description %}<p>{{ contest.description }}</p>{% endif %}
+    {% if contest.voting_on %}
+    <div class="user-information">
+        {% if user.is_authenticated %}
+            <p><strong>Hello {{ user }}. You have already scored the entries with the smiley faces. You have NOT scored the entries with the stars.</strong></p>
+        {% else %}
+            <a href="/contest/login">Log in to Vote</a>
+        {% endif %}
+    </div>
+    {% else %}
+      <p><strong>Voting is now closed</strong></p>
+      <p><a href="/contest/{{ contest.id }}/results/">View Results</a></p>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+<div class="entry-contest">
+    {% for category, entries in categories.items %}
+    <div class="contest-section">
+        <h2>{{ category|capfirst }}</h2>
+        {% for entry in entries %}
+        <div id="contest-entry-{{entry.id}}" class="contest-entry">
+            <a href="{{ entry.image.url }}?height={{ entry.image.height|add:5 }}&width={{ entry.image.width|add:5 }}" class="thickbox"  name="{{ entry.id }}">
+                <img src="{{ entry.thumbnail.url }}" alt="{{ entry.id }}" />
+            </a>
+            {% if contest.voting_on and user.is_authenticated %}
+                {% if not entry.voted %}
+                    <div class="rating-area stars {{ entry.voted }}" id="ratingArea{{ entry.id }}" id="ratingArea{{ entry.id }}">
+                        <div id="ratingArea{{ entry.id }}-star1" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star2" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star3" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star4" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star5" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star6" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star7" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star8" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star9" class='star off'></div>
+                        <div id="ratingArea{{ entry.id }}-star10" class='star off'></div>
+                    </div>
+                {% endif %}
+                <div class="rating-area happy" id="happyArea{{ entry.id }}"{% if not entry.voted %} style="display:none;"{% endif %}>
+                    <div id="ratingArea{{ entry.id }}-happy" class="happy">You gave this photo a <span class="score">{% entry_score entry.id user.id %}</span>.</div>
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
