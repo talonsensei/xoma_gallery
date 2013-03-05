@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic.simple import redirect_to
 from django.template import RequestContext
 
-import decider.models as dec_m
+import xoma_gallery.decider.models as dec_m
 
 
 def decision(request):

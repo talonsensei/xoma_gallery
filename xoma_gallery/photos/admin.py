@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 from django.utils.datastructures import SortedDict
-import photos.models as photos_m
+import xoma_gallery.photos.models as photos_m
 import pdb
 
 class CategoryInline(admin.TabularInline):

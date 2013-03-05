@@ -2,7 +2,7 @@ import pdb
 
 from django.http import HttpResponse
 
-import files.models as files_m
+import xoma_gallery.files.models as files_m
 
 
 def get_file(request, contents_pk):

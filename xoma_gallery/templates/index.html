@@ -3,35 +3,37 @@
 {% block pagetitle %}Previous Xoma Photo Contests{% endblock %}
 
 {% block content %}
-{% if contests %}
-    {% for contest in contests %}
-    <div class="photo-contest">
-        <h2>
-          <a href="/contest/{{ contest.id }}">{{ contest.name }}</a> -
-          <span class="small">
-            Voting
-            {% if not contest.voting_on %}
-              CLOSED.
-              {% if contest.winners %}
-                <a href="/contest/{{ contest.id }}/results/">See Results.</span>
-              {% endif %}
-            {% else %}
-              OPEN.
-            {% endif %}
-          </span>
-        </h2>
-        {% for entry in contest.sample_entries %}
-        <div class="contest-thumbnail">
-            <a href="/contest/{{ contest.id }}">
-                <img src="{{ entry.thumbnail.url }}" alt="{{ entry.name }}"/>
-            </a>
-        </div>
+    {% if contests %}
+        {% for contest in contests %}
+            <div class="photo-contest">
+                <h2>
+                    <a href="/xoma_gallery/contest/{{ contest.id }}">{{ contest.name }}</a> -
+                    <span class="small">
+                    Voting
+                    {% if not contest.voting_on %}
+                        CLOSED.
+                        {% if contest.winners %}
+                            <a href="/xoma_gallery/contest/{{ contest.id }}/results/">See Results.</span>
+                        {% endif %}
+                    {% else %}
+                        OPEN.
+                    {% endif %}
+                    </span>
+                </h2>
+                {% if contest.sample_entries %}
+                    {% for entry in contest.sample_entries %}
+                        <div class="contest-thumbnail">
+                            <a href="/xoma_gallery/contest/{{ contest.id }}"><img src="/xoma_gallery{{ entry.thumbnail.url }}" alt="{{ entry.name }}"/></a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No submissions have been made to this contest yet</p>
+                {% endif %}
+            </div>
+	       <hr class="space">
         {% endfor %}
-    </div>
-	<hr class="space">
-    {% endfor %}
-{% else %}
-    <p>No galleries were found.</p>
-{% endif %}
+    {% else %}
+        <p>No galleries were found.</p>
+    {% endif %}
 
 {% endblock %}

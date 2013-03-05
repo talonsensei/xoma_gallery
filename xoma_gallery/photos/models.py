@@ -12,8 +12,8 @@ from django.core.files.images import ImageFile
 from django.core.files.base import ContentFile
 from django.db.models import signals
 
-import files.models as files_m
-from lib.core import nested_property
+import xoma_gallery.files.models as files_m
+from xoma_gallery.lib.core import nested_property
 
 THUMBNAIL_SIZE = (200, 150)
 
@@ -40,8 +40,9 @@ class Contest(models.Model):
   def sample_entries(self):
     photos = []
     for cat in self.categories.all():
-      pos = random.randint(0, cat.entries.all().count() - 1)
-      photos.append(cat.entries.all()[pos])
+      if cat.entries.all().count() != 0:
+        pos = random.randint(0, cat.entries.all().count()-1)  # orig was cat.entries.all().count()-1
+        photos.append(cat.entries.all()[pos])
     return photos
 
   def __unicode__(self):

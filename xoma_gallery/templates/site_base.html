@@ -1,14 +1,14 @@
 <html>
   <head>
     <title>{% block title %}Xoma: Photo Contest{% endblock %}</title>
-	<link rel="stylesheet" href="/contest/static/css/blueprint/screen.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/blueprint/screen.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	<!--[if IE]><link rel="stylesheet" href="{{ MEDIA_URL }}/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-	<link rel="stylesheet" href="/contest/static/css/project.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/project.css" type="text/css" media="screen" title="no title" charset="utf-8">
 	
-	<script type="text/javascript" src="/contest/static/js/jquery.js"></script>
-	<script type="text/javascript" src="/contest/static/js/thickbox.js"></script>
-	<script type="text/javascript" src="/contest/static/js/project.js"></script>
-	<link rel="stylesheet" href="/contest/static/css/thickbox.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/thickbox.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/project.js"></script>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/thickbox.css" type="text/css" media="screen" />
   </head>
   <body>
 	<div class="container">

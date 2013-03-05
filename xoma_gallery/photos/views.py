@@ -7,13 +7,15 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic.simple import redirect_to
 from django.template import RequestContext
 
-import photos.models as photos_m
+import xoma_gallery.photos.models as photos_m
+
 
 def index(request):
   """starting page for this application"""
   contests = photos_m.Contest.objects.all()
   return render_to_response(
       'index.html', {'contests': contests}, context_instance=RequestContext(request))
+
       
 def show_contest(request, contest_id):
   contest = get_object_or_404(photos_m.Contest, pk=contest_id)
@@ -33,15 +35,18 @@ def show_contest(request, contest_id):
   return render_to_response(
       'show_contest.html', {'contest': contest, 'categories': categories}, 
       context_instance=RequestContext(request))
+
       
 def show_results(request, contest_id):
   contest = get_object_or_404(photos_m.Contest, pk=contest_id)
   return render_to_response(
       'show_results.html', {'contest': contest}, context_instance=RequestContext(request))
 
+
 def rate(request, entry_id):
   """docstring for vote"""
   entry = get_object_or_404(photos_m.Entry, pk=entry_id)
   rating = pk=request.POST['rating']
+  pdb.set_trace()
   photos_m.Vote.objects.get_or_create(entry=entry, voter=request.user, defaults={'score':rating})
   return HttpResponse('it worked')

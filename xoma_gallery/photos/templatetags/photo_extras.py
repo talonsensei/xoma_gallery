@@ -2,7 +2,7 @@ import pdb
 
 from django import template
 
-import photos.models as photos_m
+import xoma_gallery.photos.models as photos_m
 
 register = template.Library()
 

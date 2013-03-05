@@ -11,7 +11,7 @@ from django.core.files.images import ImageFile
 from django.core.files.storage import Storage
 from django.db import models
 
-from lib.core import nested_property
+from xoma_gallery.lib.core import nested_property
 
 class FileContent(models.Model):
   '''
